@@ -1,0 +1,68 @@
+{
+  "studio": {
+    "name": "Studio T1",
+    "description": "Studio indépendant avec terrasse privée",
+    "capacity": "2 personnes",
+    "seasons": {
+      "low": {
+        "label": "Basse saison",
+        "period": "Janvier - Mars, Novembre",
+        "pricePerNight": 65,
+        "pricePerWeek": 390
+      },
+      "mid": {
+        "label": "Moyenne saison", 
+        "period": "Avril - Juin, Septembre - Octobre",
+        "pricePerNight": 75,
+        "pricePerWeek": 450
+      },
+      "high": {
+        "label": "Haute saison",
+        "period": "Juillet - Août, Décembre",
+        "pricePerNight": 85,
+        "pricePerWeek": 510
+      }
+    },
+    "extras": {
+      "cleaning": 40,
+      "extraPerson": 15
+    }
+  },
+  "villa": {
+    "name": "Villa T4",
+    "description": "Villa 3 chambres avec piscine et vue océan",
+    "capacity": "6 personnes (8 max)",
+    "seasons": {
+      "low": {
+        "label": "Basse saison",
+        "period": "Janvier - Mars, Novembre",
+        "pricePerNight": 150,
+        "pricePerWeek": 900
+      },
+      "mid": {
+        "label": "Moyenne saison",
+        "period": "Avril - Juin, Septembre - Octobre",
+        "pricePerNight": 180,
+        "pricePerWeek": 1800
+      },
+      "high": {
+        "label": "Haute saison",
+        "period": "Juillet - Août, Décembre",
+        "pricePerNight": 220,
+        "pricePerWeek": 1320
+      }
+    },
+    "extras": {
+      "cleaning": 80,
+      "extraPerson": 20
+    }
+  },
+  "general": {
+    "currency": "€",
+    "minimumStay": 2,
+    "checkIn": "15h00",
+    "checkOut": "11h00",
+    "deposit": "30%",
+    "cancellation": "Remboursement intégral jusqu'à 14 jours avant l'arrivée"
+  }
+}

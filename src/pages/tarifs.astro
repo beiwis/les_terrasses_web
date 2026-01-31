@@ -1,0 +1,206 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import PricingCard from '../components/PricingCard.astro';
+
+// Import prices from config file - EDIT THIS FILE TO CHANGE PRICES
+import prices from '../config/prices.json';
+
+const { villa, studio, general } = prices;
+---
+
+<Layout title="Tarifs & Disponibilités | Les Terrasses des Charmilles">
+  <Header />
+
+  <Hero 
+    title="Tarifs & Disponibilités"
+    subtitle="Réservez votre séjour"
+    image="/images/pool.jpg"
+    height="medium"
+  />
+
+  <!-- Villa Pricing -->
+  <Section background="white" subtitle={villa.name} title="Tarifs Villa">
+    <div class="max-w-5xl mx-auto">
+      <p class="text-center text-charcoal/70 mb-12 max-w-2xl mx-auto">
+        {villa.description}. Capacité : {villa.capacity}.
+        Toutes les charges sont comprises : eau, électricité, internet. 
+        La villa est entièrement équipée avec linge et draps fournis.
+      </p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <PricingCard 
+          title={villa.seasons.low.label}
+          price={villa.seasons.low.pricePerWeek.toLocaleString('fr-FR')}
+          period={villa.seasons.low.period}
+          features={[
+            "Villa T4 complète",
+            "3 chambres climatisées",
+            "Piscine au sel privée",
+            "Eau & électricité inclus",
+            "Wi-Fi haut débit",
+            `${villa.seasons.low.pricePerNight}${general.currency}/nuit`
+          ]}
+          ctaText="Réserver"
+          ctaLink="/contact"
+        />
+        
+        <PricingCard 
+          title={villa.seasons.mid.label}
+          price={villa.seasons.mid.pricePerWeek.toLocaleString('fr-FR')}
+          period={villa.seasons.mid.period}
+          features={[
+            "Villa T4 complète",
+            "3 chambres climatisées",
+            "Piscine au sel privée",
+            "Eau & électricité inclus",
+            "Wi-Fi haut débit",
+            `${villa.seasons.mid.pricePerNight}${general.currency}/nuit`
+          ]}
+          highlighted={true}
+          ctaText="Réserver"
+          ctaLink="/contact"
+        />
+        
+        <PricingCard 
+          title={villa.seasons.high.label}
+          price={villa.seasons.high.pricePerWeek.toLocaleString('fr-FR')}
+          period={villa.seasons.high.period}
+          features={[
+            "Villa T4 complète",
+            "3 chambres climatisées",
+            "Piscine au sel privée",
+            "Eau & électricité inclus",
+            "Wi-Fi haut débit",
+            `${villa.seasons.high.pricePerNight}${general.currency}/nuit`
+          ]}
+          ctaText="Réserver"
+          ctaLink="/contact"
+        />
+      </div>
+      
+      <p class="text-center text-charcoal/50 text-sm mt-8">
+        Ménage de fin de séjour : {villa.extras.cleaning}{general.currency} • Personne supplémentaire : {villa.extras.extraPerson}{general.currency}/nuit
+      </p>
+    </div>
+  </Section>
+
+  <!-- Studio Pricing -->
+  <Section background="cream" subtitle={studio.name} title="Tarifs Studio">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-center text-charcoal/70 mb-12 max-w-2xl mx-auto">
+        {studio.description}. Capacité : {studio.capacity}.
+        Minimum {general.minimumStay} nuits. Forfait ménage de {studio.extras.cleaning}{general.currency}, toutes autres charges comprises.
+      </p>
+      
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+          <div class="p-8 text-center">
+            <p class="text-charcoal/60 text-sm uppercase tracking-wider mb-2">{studio.seasons.low.label}</p>
+            <p class="font-serif text-3xl text-charcoal">{studio.seasons.low.pricePerNight}{general.currency}<span class="text-lg">/nuit</span></p>
+            <p class="text-charcoal/50 text-xs mt-1">{studio.seasons.low.period}</p>
+            <p class="text-gold text-sm mt-2">{studio.seasons.low.pricePerWeek}{general.currency}/semaine</p>
+          </div>
+          <div class="p-8 text-center bg-gold/5">
+            <p class="text-charcoal/60 text-sm uppercase tracking-wider mb-2">{studio.seasons.mid.label}</p>
+            <p class="font-serif text-3xl text-charcoal">{studio.seasons.mid.pricePerNight}{general.currency}<span class="text-lg">/nuit</span></p>
+            <p class="text-charcoal/50 text-xs mt-1">{studio.seasons.mid.period}</p>
+            <p class="text-gold text-sm mt-2">{studio.seasons.mid.pricePerWeek}{general.currency}/semaine</p>
+          </div>
+          <div class="p-8 text-center">
+            <p class="text-charcoal/60 text-sm uppercase tracking-wider mb-2">{studio.seasons.high.label}</p>
+            <p class="font-serif text-3xl text-charcoal">{studio.seasons.high.pricePerNight}{general.currency}<span class="text-lg">/nuit</span></p>
+            <p class="text-charcoal/50 text-xs mt-1">{studio.seasons.high.period}</p>
+            <p class="text-gold text-sm mt-2">{studio.seasons.high.pricePerWeek}{general.currency}/semaine</p>
+          </div>
+        </div>
+        <div class="bg-cream/50 p-6 text-center">
+          <p class="text-charcoal/70 text-sm">
+            <span class="text-gold font-medium">Inclus :</span> Eau, électricité, internet, draps et serviettes. 
+            <span class="text-charcoal/50">| Forfait ménage : {studio.extras.cleaning}{general.currency}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Availability -->
+  <Section background="white" subtitle="Calendrier" title="Disponibilités 2026">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gradient-to-br from-charcoal to-charcoal/90 rounded-2xl p-8 md:p-12 text-white text-center">
+        <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-gold/20 flex items-center justify-center">
+          <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        
+        <h3 class="font-serif text-2xl mb-4">Périodes Disponibles</h3>
+        <p class="text-white/70 mb-8 max-w-xl mx-auto">
+          La villa est actuellement disponible pour les périodes suivantes. 
+          Contactez-nous pour vérifier d'autres dates éventuellement disponibles.
+        </p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white/10 rounded-lg p-4">
+            <p class="font-serif text-xl text-gold">Juin</p>
+            <p class="text-white/60 text-sm">2026</p>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <p class="font-serif text-xl text-gold">Juillet</p>
+            <p class="text-white/60 text-sm">2026</p>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <p class="font-serif text-xl text-gold">Août</p>
+            <p class="text-white/60 text-sm">2026</p>
+          </div>
+          <div class="bg-white/10 rounded-lg p-4">
+            <p class="font-serif text-xl text-gold">Septembre</p>
+            <p class="text-white/60 text-sm">2026</p>
+          </div>
+        </div>
+        
+        <a 
+          href="/contact" 
+          class="inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal font-sans text-sm uppercase tracking-widest rounded-lg hover:bg-gold/90 transition-colors"
+        >
+          Vérifier une date
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Social Proof -->
+  <Section background="cream">
+    <div class="text-center max-w-3xl mx-auto">
+      <p class="font-sans text-sm uppercase tracking-[0.3em] text-gold mb-4">
+        Rejoignez-nous
+      </p>
+      <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-6">
+        Suivez-nous sur Facebook
+      </h2>
+      <p class="text-charcoal/70 mb-8">
+        Retrouvez nos dernières actualités, photos et avis de nos voyageurs 
+        sur notre page Facebook.
+      </p>
+      <a 
+        href="https://www.facebook.com/p/Les-Terrasses-des-Charmilles-61567753822789/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-[#1877F2] text-white font-sans text-sm uppercase tracking-widest rounded-lg hover:bg-[#166FE5] transition-colors"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        Notre page Facebook
+      </a>
+    </div>
+  </Section>
+
+  <Footer />
+</Layout>

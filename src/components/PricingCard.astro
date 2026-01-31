@@ -1,0 +1,76 @@
+---
+interface Props {
+  title: string;
+  price: string;
+  period: string;
+  features: string[];
+  highlighted?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const { 
+  title, 
+  price, 
+  period, 
+  features, 
+  highlighted = false,
+  ctaText = 'Réserver',
+  ctaLink = '/contact'
+} = Astro.props;
+---
+
+<div class={`relative rounded-2xl p-8 md:p-10 transition-all duration-300 ${
+  highlighted 
+    ? 'bg-charcoal text-white shadow-2xl scale-105' 
+    : 'bg-white shadow-lg hover:shadow-xl'
+}`}>
+  {highlighted && (
+    <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+      <span class="bg-gold text-charcoal text-xs font-sans uppercase tracking-widest px-4 py-1 rounded-full">
+        Populaire
+      </span>
+    </div>
+  )}
+
+  <div class="text-center mb-8">
+    <h3 class={`font-serif text-2xl mb-4 ${highlighted ? 'text-white' : 'text-charcoal'}`}>
+      {title}
+    </h3>
+    <div class="flex items-baseline justify-center gap-1">
+      <span class={`font-serif text-4xl md:text-5xl ${highlighted ? 'text-gold' : 'text-charcoal'}`}>
+        {price}
+      </span>
+      <span class={`text-sm ${highlighted ? 'text-white/70' : 'text-charcoal/60'}`}>
+        €
+      </span>
+    </div>
+    <p class={`text-sm mt-2 ${highlighted ? 'text-white/70' : 'text-charcoal/60'}`}>
+      {period}
+    </p>
+  </div>
+
+  <ul class="space-y-4 mb-8">
+    {features.map((feature) => (
+      <li class="flex items-start gap-3">
+        <svg class={`w-5 h-5 flex-shrink-0 mt-0.5 ${highlighted ? 'text-gold' : 'text-gold'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        <span class={highlighted ? 'text-white/90' : 'text-charcoal/80'}>
+          {feature}
+        </span>
+      </li>
+    ))}
+  </ul>
+
+  <a 
+    href={ctaLink}
+    class={`block w-full py-4 text-center font-sans text-sm uppercase tracking-widest rounded-lg transition-all duration-300 ${
+      highlighted 
+        ? 'bg-gold text-charcoal hover:bg-gold/90' 
+        : 'bg-charcoal text-white hover:bg-charcoal/90'
+    }`}
+  >
+    {ctaText}
+  </a>
+</div>

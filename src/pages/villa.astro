@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ImageGallery from '../components/ImageGallery.astro';
+
+const villaImages = [
+  { src: '/images/overview.jpg', alt: 'Vue extérieure de la villa' },
+  { src: '/images/t4_living_room.jpg', alt: 'Salon lumineux' },
+  { src: '/images/pool.jpg', alt: 'Piscine au sel' },
+  { src: '/images/t4_panoramic_terrace_view_day.jpg', alt: 'Terrasse avec vue océan' },
+  { src: '/images/t4_main_bedroom.jpg', alt: 'Chambre principale' },
+  { src: '/images/t4_bathroom.jpg', alt: 'Salle de bain' },
+  { src: '/images/t4_kitchen.jpg', alt: 'Cuisine américaine' },
+  { src: '/images/t4_stairs.jpg', alt: 'Architecture intérieure' },
+  { src: '/images/swing_day.jpg', alt: 'Jardin tropical' }
+];
+
+const roomDetails = [
+  {
+    level: 'Rez-de-chaussée',
+    description: 'Studio T1 indépendant avec accès direct à la piscine au sel et au jardin tropical arboré.'
+  },
+  {
+    level: 'Premier étage',
+    description: 'Une varangue spacieuse vous accueille, ainsi qu\'un salon ouvert avec cuisine américaine entièrement équipée.'
+  },
+  {
+    level: 'Étage intermédiaire',
+    description: 'Une chambre avec terrasse privée, toilettes séparées et salle de bain complète.'
+  },
+  {
+    level: 'Dernier étage',
+    description: 'Deux chambres donnant sur un balcon panoramique avec vue imprenable sur l\'Océan Indien.'
+  }
+];
+---
+
+<Layout title="La Villa | Les Terrasses des Charmilles">
+  <Header />
+
+  <Hero 
+    title="La Villa T4"
+    subtitle="Hébergement principal"
+    image="/images/overview.jpg"
+    height="large"
+  />
+
+  <!-- Description -->
+  <Section background="white" subtitle="Présentation" title="Une Villa d'Exception">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-charcoal/80 leading-relaxed text-lg text-center mb-12">
+        La villa est située à La Saline les Bains, à deux pas du lagon, entre la pointe de 
+        Trois Bassins et Trou d'Eau, dans un quartier résidentiel calme et sécurisé. 
+        La maison, traversante, est très bien aérée avec une terrasse sous les manguiers 
+        pour profiter de la fraîcheur tropicale.
+      </p>
+
+      <!-- Room Layout -->
+      <div class="grid md:grid-cols-2 gap-8">
+        {roomDetails.map((room, index) => (
+          <div class="relative pl-8 border-l-2 border-gold">
+            <span class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-gold text-charcoal text-sm font-bold flex items-center justify-center">
+              {index + 1}
+            </span>
+            <h3 class="font-serif text-xl text-charcoal mb-2">{room.level}</h3>
+            <p class="text-charcoal/70">{room.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Features -->
+  <Section background="cream" subtitle="Équipements" title="Confort & Commodités">
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <h3 class="font-serif text-xl text-charcoal mb-4 flex items-center gap-3">
+          <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          Chambres
+        </h3>
+        <ul class="space-y-2 text-charcoal/70">
+          <li>• 3 chambres climatisées</li>
+          <li>• Ventilateurs dans chaque pièce</li>
+          <li>• Draps et linge fournis</li>
+          <li>• Vue océan depuis 2 chambres</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <h3 class="font-serif text-xl text-charcoal mb-4 flex items-center gap-3">
+          <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+          </svg>
+          Équipements
+        </h3>
+        <ul class="space-y-2 text-charcoal/70">
+          <li>• Piscine au sel privée</li>
+          <li>• Cuisine américaine équipée</li>
+          <li>• Wi-Fi haut débit</li>
+          <li>• Lave-linge</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <h3 class="font-serif text-xl text-charcoal mb-4 flex items-center gap-3">
+          <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+          Extérieur
+        </h3>
+        <ul class="space-y-2 text-charcoal/70">
+          <li>• Jardin tropical arboré</li>
+          <li>• Terrasse sous les manguiers</li>
+          <li>• Varangue spacieuse</li>
+          <li>• Balcon vue océan</li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Gallery -->
+  <Section background="white" subtitle="Galerie" title="Visite en Images">
+    <ImageGallery images={villaImages} columns={3} />
+  </Section>
+
+  <!-- CTA -->
+  <Section background="charcoal">
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="font-serif text-3xl md:text-4xl text-white mb-6">
+        Réservez la Villa
+      </h2>
+      <p class="text-white/70 mb-8">
+        Disponible juin, juillet, août et septembre 2026. 
+        Contactez-nous pour d'autres dates éventuellement disponibles.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/tarifs" 
+          class="px-8 py-4 bg-gold text-charcoal font-sans text-sm uppercase tracking-widest rounded-lg hover:bg-gold/90 transition-colors"
+        >
+          Voir les tarifs
+        </a>
+        <a 
+          href="/contact" 
+          class="px-8 py-4 border-2 border-white text-white font-sans text-sm uppercase tracking-widest rounded-lg hover:bg-white hover:text-charcoal transition-colors"
+        >
+          Contacter
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <Footer />
+</Layout>

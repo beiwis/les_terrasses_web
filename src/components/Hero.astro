@@ -1,0 +1,104 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  image: string;
+  height?: 'full' | 'large' | 'medium';
+  showCta?: boolean;
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  image, 
+  height = 'full',
+  showCta = false,
+  ctaText = 'Découvrir',
+  ctaLink = '#discover'
+} = Astro.props;
+
+const heightClasses = {
+  full: 'min-h-screen',
+  large: 'min-h-[85vh]',
+  medium: 'min-h-[60vh]'
+};
+---
+
+<section class={`relative ${heightClasses[height]} flex items-center justify-center overflow-hidden`}>
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img 
+      src={image} 
+      alt="" 
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal/70"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+    {subtitle && (
+      <p class="font-sans text-sm md:text-base uppercase tracking-[0.3em] text-gold mb-6 animate-fade-in-up">
+        {subtitle}
+      </p>
+    )}
+    
+    <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-light text-white leading-tight mb-8 animate-fade-in-up animation-delay-200">
+      {title}
+    </h1>
+
+    <slot />
+
+    {showCta && (
+      <div class="mt-12 animate-fade-in-up animation-delay-400">
+        <a 
+          href={ctaLink}
+          class="inline-flex items-center gap-2 text-white/80 hover:text-gold transition-colors group"
+        >
+          <span class="font-sans text-sm uppercase tracking-widest">{ctaText}</span>
+          <svg class="w-5 h-5 transform group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+      </div>
+    )}
+  </div>
+
+  <!-- Scroll Indicator (only for full height) -->
+  {height === 'full' && (
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+        <div class="w-1 h-2 bg-white/50 rounded-full"></div>
+      </div>
+    </div>
+  )}
+</section>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+</style>

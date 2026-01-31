@@ -1,0 +1,142 @@
+---
+const navItems = [
+  { href: '/', label: 'Accueil' },
+  { href: '/villa', label: 'La Villa' },
+  { href: '/studio', label: 'Le Studio' },
+  { href: '/tarifs', label: 'Tarifs' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+  <div class="container mx-auto px-6 py-4">
+    <nav class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="group">
+        <div class="flex flex-col">
+          <span class="font-serif text-2xl md:text-3xl font-light tracking-wide text-white group-hover:text-gold transition-colors">
+            Les Terrasses
+          </span>
+          <span class="font-serif text-sm md:text-base font-light tracking-widest text-white/80 -mt-1">
+            des Charmilles
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="hidden lg:flex items-center gap-8">
+        {navItems.map((item) => (
+          <li>
+            <a 
+              href={item.href}
+              class:list={[
+                "relative font-sans text-sm uppercase tracking-widest transition-colors duration-300",
+                "after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-gold after:transition-all after:duration-300",
+                currentPath === item.href 
+                  ? "text-gold after:w-full" 
+                  : "text-white hover:text-gold after:w-0 hover:after:w-full"
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        class="lg:hidden text-white p-2 focus:outline-none"
+        id="mobile-menu-btn"
+        aria-label="Menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    class="lg:hidden fixed inset-0 bg-charcoal/98 z-50 transform translate-x-full transition-transform duration-500 ease-in-out"
+    id="mobile-menu"
+  >
+    <div class="flex flex-col h-full">
+      <div class="flex justify-between items-center p-6">
+        <span class="font-serif text-2xl text-white">Menu</span>
+        <button class="text-white p-2" id="close-menu-btn" aria-label="Fermer">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <nav class="flex-1 flex items-center justify-center">
+        <ul class="space-y-8 text-center">
+          {navItems.map((item) => (
+            <li>
+              <a 
+                href={item.href}
+                class:list={[
+                  "font-serif text-3xl transition-colors duration-300",
+                  currentPath === item.href ? "text-gold" : "text-white hover:text-gold"
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="p-6 text-center">
+        <a 
+          href="https://www.facebook.com/p/Les-Terrasses-des-Charmilles-61567753822789/" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-white/70 hover:text-gold transition-colors"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Suivez-nous sur Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('main-header');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      header?.classList.add('bg-charcoal/95', 'backdrop-blur-md', 'shadow-lg');
+    } else {
+      header?.classList.remove('bg-charcoal/95', 'backdrop-blur-md', 'shadow-lg');
+    }
+  });
+
+  // Mobile menu toggle
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('translate-x-full');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.add('translate-x-full');
+    document.body.style.overflow = '';
+  });
+
+  // Close menu on link click
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

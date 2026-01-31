@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4BC7D"/>
+      <stop offset="50%" style="stop-color:#C9A959"/>
+      <stop offset="100%" style="stop-color:#B8964A"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#2C2C2C"/>
+  
+  <!-- Stylized "T" for Terrasses -->
+  <path d="M25 30 L75 30 L75 38 L54 38 L54 75 L46 75 L46 38 L25 38 Z" fill="url(#gold)"/>
+  
+  <!-- Decorative line representing terrasse/balcony -->
+  <rect x="30" y="70" width="40" height="3" rx="1.5" fill="url(#gold)" opacity="0.7"/>
+  
+  <!-- Small palm leaf accent -->
+  <path d="M70 55 Q78 45 72 35 Q75 45 70 55" stroke="url(#gold)" stroke-width="2" fill="none" opacity="0.6"/>
+</svg>

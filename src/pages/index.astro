@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import ImageGallery from '../components/ImageGallery.astro';
+
+const features = [
+  {
+    icon: 'pool',
+    title: 'Piscine au Sel',
+    description: 'Une piscine au sel pour vous rafraîchir après une journée à la plage.'
+  },
+  {
+    icon: 'beach',
+    title: 'Proche du Lagon',
+    description: 'À deux pas du magnifique lagon de La Saline les Bains.'
+  },
+  {
+    icon: 'view',
+    title: 'Vue sur l\'Océan',
+    description: 'Contemplez l\'Océan Indien depuis les terrasses panoramiques.'
+  },
+  {
+    icon: 'ac',
+    title: 'Climatisation',
+    description: 'Trois chambres climatisées avec ventilateurs pour votre confort.'
+  },
+  {
+    icon: 'garden',
+    title: 'Jardin Tropical',
+    description: 'Un jardin arboré avec manguiers pour des moments de fraîcheur.'
+  },
+  {
+    icon: 'wifi',
+    title: 'Internet Inclus',
+    description: 'Connexion Wi-Fi haut débit incluse dans toutes les locations.'
+  }
+];
+
+const galleryImages = [
+  { src: '/images/overview.jpg', alt: 'Vue de la villa' },
+  { src: '/images/t4_living_room.jpg', alt: 'Intérieur lumineux' },
+  { src: '/images/pool.jpg', alt: 'Piscine tropicale' },
+  { src: '/images/t4_panoramic_terrace_view_sunset.jpg', alt: 'Terrasse avec vue' },
+  { src: '/images/terrace.jpg', alt: 'Terrasse' },
+  { src: '/images/oveview_night.jpg', alt: 'Vue de nuit' }
+];
+---
+
+<Layout title="Les Terrasses des Charmilles | Location de Luxe à la Réunion">
+  <Header />
+  
+  <!-- Hero Section -->
+  <Hero 
+    title="Les Terrasses des Charmilles"
+    subtitle="Île de la Réunion"
+    image="/images/overview.jpg"
+    height="full"
+    showCta={true}
+    ctaText="Découvrir"
+    ctaLink="#discover"
+  >
+    <p class="font-sans text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
+      Une villa d'exception à La Saline les Bains, à deux pas du lagon
+    </p>
+  </Hero>
+
+  <!-- Introduction Section -->
+  <Section id="discover" background="white" subtitle="Bienvenue" title="Votre Havre de Paix Tropical">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-charcoal/80 leading-relaxed text-lg mb-6">
+            Nichée dans un quartier résidentiel calme et sécurisé de La Saline les Bains, 
+            notre villa vous offre un séjour d'exception entre le lagon turquoise et les 
+            montagnes verdoyantes de l'Île de la Réunion.
+          </p>
+          <p class="text-charcoal/80 leading-relaxed text-lg mb-8">
+            La propriété comprend une magnifique villa T4 sur plusieurs niveaux avec vue 
+            sur l'Océan Indien, ainsi qu'un studio indépendant T1 donnant sur la piscine 
+            au sel et le jardin tropical arboré.
+          </p>
+          <a 
+            href="/villa" 
+            class="inline-flex items-center gap-2 font-sans text-sm uppercase tracking-widest text-charcoal hover:text-gold transition-colors group"
+          >
+            Découvrir la villa
+            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+        <div class="relative">
+          <img 
+            src="/images/overview.jpg" 
+            alt="Vue de la villa"
+            class="rounded-lg shadow-xl"
+          />
+          <div class="absolute -bottom-6 -left-6 bg-gold text-charcoal p-6 rounded-lg shadow-lg">
+            <span class="block font-serif text-3xl">15+</span>
+            <span class="text-sm uppercase tracking-wider">Années d'expérience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Features Section -->
+  <Section background="cream" subtitle="Équipements" title="Tout pour Votre Confort">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature) => (
+        <FeatureCard 
+          icon={feature.icon}
+          title={feature.title}
+          description={feature.description}
+        />
+      ))}
+    </div>
+  </Section>
+
+  <!-- Gallery Preview -->
+  <Section background="white" subtitle="Galerie" title="Découvrez Notre Propriété">
+    <ImageGallery images={galleryImages} columns={3} />
+    <div class="text-center mt-12">
+      <a 
+        href="/villa" 
+        class="inline-flex items-center gap-2 px-8 py-4 bg-charcoal text-white font-sans text-sm uppercase tracking-widest rounded-lg hover:bg-charcoal/90 transition-colors"
+      >
+        Voir toutes les photos
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </Section>
+
+  <!-- Location Section -->
+  <Section background="charcoal" subtitle="Situation" title="Un Emplacement Idéal">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-white/80 leading-relaxed text-lg mb-6">
+          Située entre la pointe de Trois Bassins et Trou d'Eau, la villa bénéficie 
+          d'un emplacement privilégié à proximité immédiate du célèbre lagon de 
+          La Saline les Bains.
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+              <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+            </span>
+            <span class="text-white/90">À 5 minutes à pied du lagon</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+              <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </span>
+            <span class="text-white/90">Quartier résidentiel calme et sécurisé</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+              <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </span>
+            <span class="text-white/90">Commerces et restaurants à proximité</span>
+          </li>
+        </ul>
+      </div>
+      <div class="relative rounded-lg overflow-hidden shadow-2xl">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.4071046547474!2d55.22!3d-21.07!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDA0JzEyLjAiUyA1NcKwMTMnMTIuMCJF!5e0!3m2!1sfr!2sfr!4v1600000000000!5m2!1sfr!2sfr"
+          width="100%" 
+          height="400" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy"
+          class="rounded-lg"
+        ></iframe>
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA Section -->
+  <Section background="cream" padding="large">
+    <div class="text-center max-w-3xl mx-auto">
+      <p class="font-sans text-sm uppercase tracking-[0.3em] text-gold mb-4">
+        Réservez votre séjour
+      </p>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-charcoal mb-6">
+        Prêt à Vivre l'Expérience ?
+      </h2>
+      <p class="text-charcoal/70 text-lg mb-10">
+        Contactez-nous dès maintenant pour vérifier les disponibilités et réserver 
+        votre séjour de rêve à l'Île de la Réunion.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/tarifs" 
+          class="px-8 py-4 bg-charcoal text-white font-sans text-sm uppercase tracking-widest rounded-lg hover:bg-charcoal/90 transition-colors"
+        >
+          Voir les tarifs
+        </a>
+        <a 
+          href="/contact" 
+          class="px-8 py-4 border-2 border-charcoal text-charcoal font-sans text-sm uppercase tracking-widest rounded-lg hover:bg-charcoal hover:text-white transition-colors"
+        >
+          Nous contacter
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+</style>

@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ImageGallery from '../components/ImageGallery.astro';
+
+const studioImages = [
+  { src: '/images/t1_general_view.jpg', alt: 'Vue du studio' },
+  { src: '/images/t1_living_room.jpg', alt: 'Espace de vie' },
+  { src: '/images/t1_bedroom_bed.jpg', alt: 'Coin nuit' },
+  { src: '/images/t1_bathroom.jpg', alt: 'Salle d\'eau' },
+  { src: '/images/pool.jpg', alt: 'Accès piscine' },
+  { src: '/images/t1_kitchen.jpg', alt: 'Cuisine' }
+];
+---
+
+<Layout title="Le Studio | Les Terrasses des Charmilles">
+  <Header />
+
+  <Hero 
+    title="Le Studio T1"
+    subtitle="Hébergement indépendant"
+    image="/images/t1_door.jpg"
+    height="large"
+  />
+
+  <!-- Description -->
+  <Section background="white" subtitle="Présentation" title="Un Cocon de Confort">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-charcoal/80 leading-relaxed text-lg mb-6">
+            Le studio T1 indépendant se trouve au rez-de-chaussée de la propriété, 
+            face à la piscine au sel et au jardin tropical arboré. Un hébergement 
+            idéal pour les couples ou les voyageurs en solo cherchant l'intimité 
+            et le confort.
+          </p>
+          <p class="text-charcoal/80 leading-relaxed text-lg">
+            Entièrement équipé et climatisé, le studio offre tout le nécessaire 
+            pour un séjour agréable à l'Île de la Réunion, avec un accès privilégié 
+            à la piscine et au jardin.
+          </p>
+        </div>
+        <div class="relative">
+          <img 
+            src="/images/t1_living_room.jpg" 
+            alt="Intérieur du studio"
+            class="rounded-lg shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Features -->
+  <Section background="cream" subtitle="Inclus" title="Ce Qui Vous Attend">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+          <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        </div>
+        <h3 class="font-serif text-lg text-charcoal mb-2">Studio Équipé</h3>
+        <p class="text-charcoal/60 text-sm">Kitchenette, coin nuit, salle d'eau</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+          <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <h3 class="font-serif text-lg text-charcoal mb-2">Climatisation</h3>
+        <p class="text-charcoal/60 text-sm">Climatisation et ventilateur</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+          <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+          </svg>
+        </div>
+        <h3 class="font-serif text-lg text-charcoal mb-2">Wi-Fi</h3>
+        <p class="text-charcoal/60 text-sm">Internet haut débit inclus</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
+          <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+        </div>
+        <h3 class="font-serif text-lg text-charcoal mb-2">Linge Fourni</h3>
+        <p class="text-charcoal/60 text-sm">Draps et serviettes inclus</p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Pricing -->
+  <Section background="white" subtitle="Tarifs Studio" title="Nos Formules">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gradient-to-br from-charcoal to-charcoal/90 rounded-2xl p-8 md:p-12 text-white">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-serif text-2xl mb-6 text-gold">Tarifs</h3>
+            <ul class="space-y-4">
+              <li class="flex justify-between items-center py-3 border-b border-white/10">
+                <span class="text-white/80">Par nuit</span>
+                <span class="font-serif text-xl">70€</span>
+              </li>
+              <li class="flex justify-between items-center py-3 border-b border-white/10">
+                <span class="text-white/80">La semaine</span>
+                <span class="font-serif text-xl">450€</span>
+              </li>
+              <li class="flex justify-between items-center py-3 border-b border-white/10">
+                <span class="text-white/80">15 jours</span>
+                <span class="font-serif text-xl">850€</span>
+              </li>
+              <li class="flex justify-between items-center py-3">
+                <span class="text-white/80">Le mois</span>
+                <span class="font-serif text-xl">1 500€</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-serif text-2xl mb-6 text-gold">Inclus</h3>
+            <ul class="space-y-3 text-white/80">
+              <li class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Eau et électricité
+              </li>
+              <li class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Internet Wi-Fi
+              </li>
+              <li class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Draps et serviettes
+              </li>
+              <li class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Accès piscine et jardin
+              </li>
+            </ul>
+            <div class="mt-6 pt-6 border-t border-white/10">
+              <p class="text-white/60 text-sm">
+                <span class="text-gold">*</span> Minimum 5 nuits • Forfait ménage : 50€
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 text-center">
+          <a 
+            href="/contact" 
+            class="inline-block px-8 py-4 bg-gold text-charcoal font-sans text-sm uppercase tracking-widest rounded-lg hover:bg-gold/90 transition-colors"
+          >
+            Vérifier les disponibilités
+          </a>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Gallery -->
+  <Section background="cream" subtitle="Galerie" title="Visite en Images">
+    <ImageGallery images={studioImages} columns={3} />
+  </Section>
+
+  <Footer />
+</Layout>

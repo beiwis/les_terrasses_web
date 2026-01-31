@@ -1,0 +1,52 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  background?: 'cream' | 'white' | 'charcoal';
+  padding?: 'normal' | 'large';
+  id?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  background = 'cream',
+  padding = 'normal',
+  id
+} = Astro.props;
+
+const bgClasses = {
+  cream: 'bg-cream',
+  white: 'bg-white',
+  charcoal: 'bg-charcoal text-white'
+};
+
+const paddingClasses = {
+  normal: 'py-20 md:py-28',
+  large: 'py-28 md:py-36'
+};
+---
+
+<section 
+  class={`${bgClasses[background]} ${paddingClasses[padding]}`}
+  id={id}
+>
+  <div class="container mx-auto px-6">
+    {(title || subtitle) && (
+      <div class="text-center mb-16">
+        {subtitle && (
+          <p class={`font-sans text-sm uppercase tracking-[0.3em] mb-4 ${background === 'charcoal' ? 'text-gold' : 'text-gold'}`}>
+            {subtitle}
+          </p>
+        )}
+        {title && (
+          <h2 class={`font-serif text-3xl md:text-4xl lg:text-5xl font-light ${background === 'charcoal' ? 'text-white' : 'text-charcoal'}`}>
+            {title}
+          </h2>
+        )}
+      </div>
+    )}
+    
+    <slot />
+  </div>
+</section>

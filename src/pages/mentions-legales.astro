@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+---
+
+<Layout title="Mentions Légales | Les Terrasses des Charmilles">
+  <Header />
+
+  <!-- Spacer for fixed header -->
+  <div class="h-24 bg-charcoal"></div>
+
+  <Section background="white" title="Mentions Légales">
+    <div class="max-w-3xl mx-auto prose prose-lg prose-charcoal">
+      <h3 class="font-serif text-xl text-charcoal">Éditeur du site</h3>
+      <p class="text-charcoal/70">
+        Le site Les Terrasses des Charmilles est édité par un particulier dans le cadre 
+        d'une activité de location saisonnière.
+      </p>
+      <p class="text-charcoal/70">
+        <strong>Contact :</strong> lesterrassesdescharmilles@gmail.com<br />
+        <strong>Localisation :</strong> La Saline les Bains, 97434, Île de la Réunion
+      </p>
+
+      <h3 class="font-serif text-xl text-charcoal mt-8">Hébergement</h3>
+      <p class="text-charcoal/70">
+        Ce site est hébergé par Netlify, Inc.<br />
+        2325 3rd Street, Suite 296<br />
+        San Francisco, CA 94107, États-Unis
+      </p>
+
+      <h3 class="font-serif text-xl text-charcoal mt-8">Propriété intellectuelle</h3>
+      <p class="text-charcoal/70">
+        L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, etc.) 
+        est la propriété exclusive de Les Terrasses des Charmilles, à l'exception des 
+        marques, logos ou contenus appartenant à d'autres sociétés partenaires ou auteurs.
+      </p>
+      <p class="text-charcoal/70">
+        Toute reproduction, distribution, modification, adaptation, retransmission ou 
+        publication de ces différents éléments est strictement interdite sans l'accord 
+        exprès par écrit de Les Terrasses des Charmilles.
+      </p>
+
+      <h3 class="font-serif text-xl text-charcoal mt-8">Données personnelles</h3>
+      <p class="text-charcoal/70">
+        Les informations recueillies via le formulaire de contact sont destinées 
+        uniquement à répondre à vos demandes de réservation et d'information. 
+        Conformément au Règlement Général sur la Protection des Données (RGPD), 
+        vous disposez d'un droit d'accès, de rectification et de suppression des 
+        données vous concernant. Pour exercer ce droit, contactez-nous par email.
+      </p>
+
+      <h3 class="font-serif text-xl text-charcoal mt-8">Limitation de responsabilité</h3>
+      <p class="text-charcoal/70">
+        Les informations contenues sur ce site sont aussi précises que possible et le site 
+        est périodiquement remis à jour, mais peut toutefois contenir des inexactitudes, 
+        des omissions ou des lacunes. Si vous constatez une lacune, erreur ou ce qui paraît 
+        être un dysfonctionnement, merci de bien vouloir le signaler par email.
+      </p>
+
+      <h3 class="font-serif text-xl text-charcoal mt-8">Liens hypertextes</h3>
+      <p class="text-charcoal/70">
+        Ce site peut contenir des liens vers d'autres sites. Les Terrasses des Charmilles 
+        n'exerce aucun contrôle sur ces sites et n'assume aucune responsabilité quant à 
+        leur contenu.
+      </p>
+
+      <p class="text-charcoal/50 text-sm mt-12">
+        Dernière mise à jour : Janvier 2026
+      </p>
+    </div>
+  </Section>
+
+  <Footer />
+</Layout>

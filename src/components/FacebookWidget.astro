@@ -1,0 +1,57 @@
+---
+interface Props {
+  pageUrl?: string;
+  width?: number;
+  height?: number;
+}
+
+const { 
+  pageUrl = 'https://www.facebook.com/p/Les-Terrasses-des-Charmilles-61567753822789/',
+  width = 340,
+  height = 500
+} = Astro.props;
+---
+
+<div class="facebook-widget-container">
+  <!-- Facebook Page Plugin -->
+  <div 
+    class="fb-page" 
+    data-href={pageUrl}
+    data-tabs="timeline"
+    data-width={width}
+    data-height={height}
+    data-small-header="false"
+    data-adapt-container-width="true"
+    data-hide-cover="false"
+    data-show-facepile="true"
+  >
+    <blockquote cite={pageUrl} class="fb-xfbml-parse-ignore">
+      <a href={pageUrl}>Les Terrasses des Charmilles</a>
+    </blockquote>
+  </div>
+</div>
+
+<!-- Facebook SDK -->
+<script is:inline>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<style>
+  .facebook-widget-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .fb-page {
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+</style>
